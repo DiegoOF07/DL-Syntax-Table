@@ -37,4 +37,16 @@ class Grammar:
     def all_symbols(self):
         return self.non_terminals.union(self.terminals)
     
-    
+    def __str__(self):
+        lines = []
+        lines.append(f"Simbolo inicial: {self.start_symbol}\n")
+
+        lines.append("Producciones:")
+        for head in self.productions:
+            bodies = [" ".join(prod) for prod in self.productions[head]]
+            lines.append(f"  {head} -> {' | '.join(bodies)}")
+
+        lines.append("\nNo terminales: " + ", ".join(sorted(self.non_terminals)))
+        lines.append("Terminales: " + ", ".join(sorted(self.terminals)))
+
+        return "\n".join(lines)
