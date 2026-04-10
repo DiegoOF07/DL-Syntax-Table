@@ -47,6 +47,10 @@ def get_first_of_secuence(symbols, grammar: Grammar, FIRST):
 
     for symbol in symbols:
 
+        if symbol == "ε":
+            result.add("ε")
+            return result
+
         if grammar.is_terminal(symbol):
             result.add(symbol)
             return result
