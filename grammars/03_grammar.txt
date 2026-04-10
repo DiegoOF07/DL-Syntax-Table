@@ -1,0 +1,5 @@
+B -> A B'
+B' -> or A B' | ε
+A -> C A'
+A' -> and C A' | ε
+C -> not C | ( B ) | true | false
