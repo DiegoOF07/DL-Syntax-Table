@@ -22,6 +22,8 @@ def analyze_grammar(grammar, name=""):
     table, conflicts = build_table(grammar, FIRST, FOLLOW)
     if is_ll1(conflicts):
         print("\nLa gramática es LL(1)")
+        print("\nTabla:")
+        print_table(table, grammar)
     else:
         print("\nLa gramática NO es LL(1). Conflictos encontrados:")
         for A, terminal, prod1, prod2 in conflicts:
@@ -29,8 +31,7 @@ def analyze_grammar(grammar, name=""):
             print(f"    Producción 1: {A} -> {' '.join(prod1)}")
             print(f"    Producción 2: {A} -> {' '.join(prod2)}")
 
-    print("\nTabla:")
-    print_table(table, grammar)
+    
 
 def load_and_analyze_file(filepath, name):
     try:

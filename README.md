@@ -107,3 +107,5 @@ C -> not C | ( B ) | true | false
 
 ---
 
+### Video con la explicación de youtube
+[![Video con la explicación](https://img.youtube.com/vi/oL19SUQ4nEg/0.jpg)](https://youtu.be/oL19SUQ4nEg)
