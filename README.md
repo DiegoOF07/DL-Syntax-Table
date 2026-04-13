@@ -11,7 +11,7 @@ Implementación en Python de los algoritmos **FIRST**, **FOLLOW** y construcció
 3. Ejecutar el siguiente comando
 
 ```bash
-python src/main.py
+python main.py
 ```
 
 El programa procesará automáticamente todos los archivos `.txt` dentro de la carpeta `grammars/` y, para cada uno, mostrará:
@@ -51,8 +51,16 @@ F  -> ( E ) | id
 
 **¿Es LL(1)?**  Sí
 
-Esta gramática está diseñada específicamente para eliminar la ambigüedad y la recursión izquierda de la gramática de expresiones aritméticas, haciéndola apta para análisis predictivo. Se incluye porque es el ejemplo canónico del curso.
+Esta gramática está diseñada específicamente para eliminar la ambigüedad y la recursión izquierda de la gramática de expresiones aritméticas, haciéndola apta para análisis predictivo. Se incluye porque es el ejemplo del curso.
 
+#### Syntax table
+|NT / T| id     | +        | *        | (      | )    | $    |
+| --- | ------ | -------- | -------- | ------ | ---- | ---- |
+| E   | E→T E' |          |          | E→T E' |      |      |
+| E'  |        | E'→+T E' |          |        | E'→ε | E'→ε |
+| T   | T→F T' |          |          | T→F T' |      |      |
+| T'  |        | T'→ε     | T'→*F T' |        | T'→ε | T'→ε |
+| F   | F→id   |          |          | F→(E)  |      |      |
 
 ### Gramática 2: Sentencias if-else 
 
@@ -86,7 +94,16 @@ C -> not C | ( B ) | true | false
 
 **¿Es LL(1)?** Sí
 
-**Justificación de elección:** Esta gramática representa operadores booleanos (`and`, `or`, `not`) con la precedencia estándar (`not` > `and` > `or`). Se eligió ya que al igual que la primer gramática ha sido manipulada para eliminar la recursividad por la izquierda y es relativamente compleja.
+**Justificación de elección:** Esta gramática representa operadores booleanos (`and`, `or`, `not`) con la precedencia estándar (`not` > `and` > `or`). Se eligió ya que al igual que la primer gramática ha sido manipulada para eliminar la recursividad por la izquierda y es relativamente compleja reflejando que el patrón de la primer gramática no es un caso aislado.
+
+#### Syntax table
+| NT \ T | (       | )    | and         | false   | not     | or         | true   | $    |
+| ------ | ------- | ---- | ----------- | ------- | ------- | ---------- | ------ | ---- |
+| A      | A→C A'  |      |             | A→C A'  | A→C A'  |            | A→C A' |      |
+| A'     |         | A'→ε | A'→and C A' |         |         |   A'→ε     |        | A'→ε |
+| B      | B→A B'  |      |             | B→A B'  | B→A B'  |            | B→A B' |      |
+| B'     |         | B'→ε |             |         |         | B'→or A B' |        | B'→ε |
+| C      | C→( B ) |      |             | C→false | C→not C |            | C→true |      |
 
 ---
 

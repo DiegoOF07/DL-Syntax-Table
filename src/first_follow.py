@@ -1,4 +1,4 @@
-from grammar import Grammar
+from src.grammar import Grammar
 
 def get_first(grammar: Grammar):
     FIRST = { A: set() for A in grammar.non_terminals }

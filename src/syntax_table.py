@@ -1,5 +1,5 @@
-from first_follow import get_first_of_secuence
-from grammar import Grammar
+from src.first_follow import get_first_of_secuence
+from src.grammar import Grammar
 
 
 def build_table(grammar: Grammar, FIRST, FOLLOW):

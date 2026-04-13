@@ -1,4 +1,4 @@
-from grammar import Grammar
+from src.grammar import Grammar
 
 
 def parse_grammar_lines(lines):

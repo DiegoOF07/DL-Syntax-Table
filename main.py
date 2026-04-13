@@ -1,7 +1,7 @@
 import os
-from parser import parse_grammar_from_file
-from first_follow import get_first, get_follow
-from syntax_table import build_table, print_table, is_ll1
+from src.parser import parse_grammar_from_file
+from src.first_follow import get_first, get_follow
+from src.syntax_table import build_table, print_table, is_ll1
 
 def analyze_grammar(grammar, name=""):
     if name:
